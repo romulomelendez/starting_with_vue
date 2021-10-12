@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html lang = "en">
+
+<head>
+
+    <meta charset = "UTF-8">
+    <meta http-equiv = "X-UA-Compatible" content="IE=edge">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>  
+    <title>Testing Vue</title>
+
+</head>
+
+<body>
+    
+    <div id = "root">
+
+        <span v-text = "text"></span>
+        <span v-html = "name"></span>
+        <div>
+
+            <button @click = "t1">Text above in H1 format</button>
+            <button @click = "t2">Text above in H2 format</button>
+            <button @click = "t3">Text above in H3 format</button>
+            <button @click = "t4">Back to H4 format</button>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        let root = new Vue({
+
+            el: "#root",
+            data: {
+
+                name: '<h4>Rômulo</h4>',
+                text: 'Click to change the size format of the text bellow'
+
+            },
+            methods: {
+
+                t1: function() { this.name = "<h1>Rômulo</h1>" },
+                t2: function() { this.name = "<h2>Rômulo</h2>" },
+                t3: function() { this.name = "<h3>Rômulo</h3>" },
+                t4: function() { this.name = "<h4>Rômulo</h4>" }
+
+            }
+
+        })
+
+    </script>
+
+
+</body>
+
+</html>
