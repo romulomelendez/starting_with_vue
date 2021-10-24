@@ -23,7 +23,7 @@
     
     <div id="root">
 
-        <div class="container w-55">
+        <div class="container w-50">
 
             <h1 class="mt-4 mb-4">COMMENT  ANYTHING</h1>
 
@@ -89,15 +89,19 @@
 
                 addComment() {
 
-                    this.comments.push({
+                    if( this.name.trim() == '' || this.message.trim() == "" ) {
 
-                        name: this.name,
-                        message: this.message
+                        this.comments.push({
 
-                    })
+                            name: this.name,
+                            message: this.message
 
-                    this.name = ''
-                    this.message = ''
+                            })
+
+                            this.name = ''
+                            this.message = ''
+
+                    }
 
                 },
 
