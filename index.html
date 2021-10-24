@@ -1,29 +1,69 @@
 <!DOCTYPE html>
 
-<html lang = "en">
+<html lang = "pt-br">
 
 <head>
 
     <meta charset = "UTF-8">
     <meta http-equiv = "X-UA-Compatible" content="IE=edge">
     <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>  
+
+    <!-- Vue CDN importation -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+    <!-- BootStrap importation -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    
     <title>Testing Vue</title>
 
 </head>
 
 <body>
     
-    <div id = "root">
+    <div id="root">
 
-        <span v-text = "text"></span>
-        <span v-html = "name"></span>
-        <div>
+        <div class="container w-55">
 
-            <button @click = "t1">Text above in H1 format</button>
-            <button @click = "t2">Text above in H2 format</button>
-            <button @click = "t3">Text above in H3 format</button>
-            <button @click = "t4">Back to H4 format</button>
+            <h1 class="mt-4 mb-4">COMMENT  ANYTHING</h1>
+
+            <div class="input-group mb-3">
+        
+                <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
+                <input v-model="name" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        
+            </div>
+        
+            <div class="form-floating mb-4">
+
+                <textarea v-model="message" class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                <label for="floatingTextarea">Comment here</label>
+
+            </div>
+            
+            <div class="mb-4">
+
+                <button v-on:click="addComment" type="button" class="btn btn-primary me-4">Add</button>
+                <button v-on:click="removeAllComments" type="button" class="btn btn-danger ms-4">Remove All</button>
+            
+            </div>
+
+            <ul class="list-group">
+
+               <div class="list-group-item" v-for="comment in comments">
+
+                    <span>
+
+                        <span class="fw-bold">{{ comment.name }}</span>
+                        <p class="fst-italic">{{ comment.message }}</p>
+                        <button v-on:click="removeComment" type="button" class="btn btn-outline-danger mb-2">remove</button>
+
+                    </span>
+
+               </div>
+                
+                
+            </ul>
 
         </div>
 
@@ -31,28 +71,53 @@
 
     <script>
 
-        let root = new Vue({
+        new Vue({
 
             el: "#root",
-            data: {
+            data() {
 
-                name: '<h4>Rômulo</h4>',
-                text: 'Click to change the size format of the text bellow'
+                return {
 
-            },
+                    comments: [],
+                    name: '',
+                    message: '',
+
+                }
+
+            },  
             methods: {
 
-                t1: function() { this.name = "<h1>Rômulo</h1>" },
-                t2: function() { this.name = "<h2>Rômulo</h2>" },
-                t3: function() { this.name = "<h3>Rômulo</h3>" },
-                t4: function() { this.name = "<h4>Rômulo</h4>" }
+                addComment() {
+
+                    this.comments.push({
+
+                        name: this.name,
+                        message: this.message
+
+                    })
+
+                    this.name = ''
+                    this.message = ''
+
+                },
+
+                removeComment() {
+
+                    console.log(this.comments)
+
+                },
+
+                removeAllComments() {
+
+                    console.log('removing all comments!')
+
+                },
 
             }
-
+            
         })
 
     </script>
-
 
 </body>
 
