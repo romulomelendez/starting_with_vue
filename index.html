@@ -124,7 +124,13 @@
 
                 removeAllComments() {
 
-                    console.log('removing all comments!')
+                    while(this.newArrayLenght != 0) {
+
+                        console.log(this.newArrayLenght)
+                        this.comments.pop()
+                        this.newArrayLenght--
+
+                    }
 
                 },
 
