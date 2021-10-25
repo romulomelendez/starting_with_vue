@@ -99,7 +99,8 @@
 
                     else {
 
-                        this.comments.push({
+                        // function unshift return the lenght of the array
+                        const numberOfElements = this.comments.unshift({
 
                             name: this.name,
                             message: this.message
@@ -116,6 +117,7 @@
                 removeComment() {
 
                     console.log(this.comments)
+                    console.log(numberOfElements)
 
                 },
 
