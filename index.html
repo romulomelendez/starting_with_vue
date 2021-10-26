@@ -54,13 +54,13 @@
 
             <ul class="list-group">
 
-               <div class="list-group-item" v-for="comment in comments">
+               <div class="list-group-item" v-for="(comment, index) in comments">
 
                     <span>
 
                         <span class="fw-bold">{{ comment.name }}</span>
                         <p class="fst-italic">{{ comment.message }}</p>
-                        <button v-on:click="removeComment" type="button" class="btn btn-outline-danger mb-2">remove</button>
+                        <button v-on:click="removeComment" type="button" class="btn btn-outline-danger mb-2">Delete</button>
 
                     </span>
 
@@ -83,6 +83,7 @@
                 return {
 
                     comments: [],
+                    index: '',
                     name: '',
                     message: '',
                     newArrayLenght: 0,
@@ -117,8 +118,8 @@
 
                 removeComment() {
 
-                    console.log(this.comments)
-                    console.log(this.newArrayLenght)
+                    this.comments.splice(this.index, 1)
+                    this.newArrayLenght--
 
                 },
 
