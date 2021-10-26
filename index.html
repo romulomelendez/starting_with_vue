@@ -58,9 +58,10 @@
 
                     <span>
 
+                        <h6><span class="badge badge-secondary bg-warning text-dark">{{ index }}</span></h6>
                         <span class="fw-bold">{{ comment.name }}</span>
                         <p class="fst-italic">{{ comment.message }}</p>
-                        <button v-on:click="removeComment" type="button" class="btn btn-outline-danger mb-2">Delete</button>
+                        <button v-on:click="removeComment(index)" type="button" class="btn btn-outline-danger mb-2">Delete</button>
 
                     </span>
 
@@ -83,7 +84,6 @@
                 return {
 
                     comments: [],
-                    index: '',
                     name: '',
                     message: '',
                     newArrayLenght: 0,
@@ -116,9 +116,9 @@
 
                 },
 
-                removeComment() {
+                removeComment(id) {
 
-                    this.comments.splice(this.index, 1)
+                    this.comments.splice(id, 1)
                     this.newArrayLenght--
 
                 },
