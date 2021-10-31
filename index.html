@@ -62,6 +62,7 @@
                         <span class="fw-bold">{{ comment.name }}</span>
                         <p class="fst-italic">{{ comment.message }}</p>
                         <button v-on:click="removeComment(index)" type="button" class="btn btn-outline-danger mb-2">Delete</button>
+                        <button v-on:click="updateComment(index)" type="button" class="btn btn-outline-success ms-4 mb-2">Update</button>
 
                     </span>
 
@@ -83,7 +84,7 @@
 
                 return {
 
-                    comments: [],
+                    comments: [{ name: "Rômulo", message: "testando" }],
                     name: '',
                     message: '',
                     newArrayLenght: 0,
@@ -134,6 +135,12 @@
                     }
 
                 },
+
+                updateComment(id) {
+
+                    
+
+                }
 
             }
             

@@ -1,3 +1,23 @@
 {
-  "dependencies": {}
+  "dependencies": {},
+  "name": "get_starting_with_vue",
+  "description": "<h3>Used Technologies:</h3>",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/romulomelendez/starting_with_vue.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/romulomelendez/starting_with_vue/issues"
+  },
+  "homepage": "https://github.com/romulomelendez/starting_with_vue#readme"
 }
