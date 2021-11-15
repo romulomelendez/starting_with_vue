@@ -8,12 +8,15 @@
     <meta http-equiv = "X-UA-Compatible" content="IE=edge">
     <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
 
+    <!-- CSS importation -->
+    <link rel = "stylesheet" href = "./modal.css">
+
     <!-- Vue CDN importation -->
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src = "https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 
     <!-- BootStrap importation -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <link href = "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel = "stylesheet" integrity = "sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin = "anonymous">
+    <script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity = "sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin = "anonymous"></script>
     
     <title>Testing Vue</title>
 
@@ -46,7 +49,9 @@
                 <button v-on:click="addComment" type="button" class="btn btn-primary me-4">Add</button>
                 <button v-on:click="removeAllComments" type="button" class="btn btn-danger ms-4 me-4">Remove All</button>
                 <button type="button" class="btn btn-primary ms-4">
+
                     <span class="badge">{{ this.newArrayLenght }}</span>
+
                 </button>
                 
             
@@ -62,7 +67,9 @@
                         <span class="fw-bold">{{ comment.name }}</span>
                         <p class="fst-italic">{{ comment.message }}</p>
                         <button v-on:click="removeComment(index)" type="button" class="btn btn-outline-danger mb-2">Delete</button>
-                        <button v-on:click="updateComment(index)" type="button" class="btn btn-outline-success ms-4 mb-2">Update</button>
+
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-outline-success ms-4 mb-2" data-toggle="modal" data-target="#myModal">Update</button>
 
                     </span>
 
@@ -70,6 +77,36 @@
                 
                 
             </ul>
+
+        </div>
+
+        <!-- Modal -->
+        <div id="modalContainer" class="">
+
+            <div id="modal">
+
+                <h1>Update!</h1>
+
+                <div class="input-group mt-3 mb-3">
+
+                    <input type="text" class="form-control" placeholder="New name"aria-describedby="basic-addon1">
+
+                </div>
+
+                <div class="input-group mb-4">
+
+                    <textarea class="form-control" placeholder="New comment">{{ "MOJO" }}</textarea>
+
+                </div>
+
+                <div id="buttonContainer">
+
+                    <button type="button" class="btn btn-outline-danger me-5">Cancel</button>
+                    <button type="button" class="btn btn-outline-success ms-5 me-5" v-on:click="updateComment(index)">Update</button>
+                
+                </div>
+
+            </div>
 
         </div>
 
