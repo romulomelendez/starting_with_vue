@@ -69,7 +69,7 @@
                         <button v-on:click="removeComment(index)" type="button" class="btn btn-outline-danger mb-2">Delete</button>
 
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-outline-success ms-4 mb-2" v-on:click="updateComment(index)">Update</button>
+                        <button type="button" class="btn btn-outline-success ms-4 mb-2" v-on:click="showModal">Edit</button>
 
                     </span>
 
@@ -89,15 +89,15 @@
 
                 <div class="input-group mt-3 mb-3">
 
-                    <input type="text" class="form-control" placeholder="New name">
+                    <input type="text" class="form-control" placeholder="New name" v-model="newName">
 
                 </div>
 
                 <div class="input-group mb-4">
 
-                    <textarea class="form-control" placeholder="New comment"></textarea>
+                    <textarea class="form-control" placeholder="New comment" v-model="newComment"></textarea>
 
-                </div>
+                </div>  
 
                 <div id="buttonContainer">
 
@@ -125,6 +125,8 @@
                     name: '',
                     message: '',
                     newArrayLenght: 0,
+                    newName: '',
+                    newComment: '',
 
                 }
 
@@ -173,13 +175,17 @@
                 },
 
                 updateComment(id) {
-
-                    console.log('trying to implement a modal to update the comments')
-                    console.log(this.comments[id].name)
-                    console.log(this.comments[id].message)
                     
+                    // update the variables
+                    this.comments[id].name = this.newName
+                    this.comments[id].message = this.newComment
+
+                },
+
+                showModal() {
+
                     let modalContainer = document.querySelector('#modalContainer')
-                    modalContainer.style.display = 'flex'    // show modal
+                    modalContainer.style.display = 'flex'
 
                 },
 
@@ -192,7 +198,6 @@
 
                     } else return
                     
-
                 },
 
             }
