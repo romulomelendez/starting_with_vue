@@ -69,7 +69,7 @@
                         <button v-on:click="removeComment(index)" type="button" class="btn btn-outline-danger mb-2">Delete</button>
 
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-outline-success ms-4 mb-2" v-on:click="showModal">Update</button>
+                        <button type="button" class="btn btn-outline-success ms-4 mb-2" v-on:click="updateComment(index)">Update</button>
 
                     </span>
 
@@ -81,7 +81,7 @@
         </div>
 
         <!-- Modal -->
-        <div id="modalContainer">
+        <div id="modalContainer" v-on:click="closeModal">
 
             <div id="modal">
 
@@ -101,7 +101,7 @@
 
                 <div id="buttonContainer">
 
-                    <button type="button" class="btn btn-outline-danger me-5">Cancel</button>
+                    <button type="button" id="cancel" class="btn btn-outline-danger me-5" v-on:click="closeModal">Cancel</button>
                     <button type="button" class="btn btn-outline-success ms-5" v-on:click="updateComment(index)">Update</button>
                 
                 </div>
@@ -174,18 +174,29 @@
 
                 updateComment(id) {
 
-                    console.log('trying to implement a modal to update the comments')   
+                    console.log('trying to implement a modal to update the comments')
+                    console.log(this.comments[id].name)
+                    console.log(this.comments[id].message)
+                    
+                    let modalContainer = document.querySelector('#modalContainer')
+                    modalContainer.style.display = 'flex'    // show modal
 
                 },
 
-                showModal() {
+                closeModal(event) {
 
-                    document.querySelector('#modalContainer').style.display = 'flex'
+                    if ( event.target.id == 'cancel' || event.target.id == 'modalContainer' ) {
+
+                        let modalContainer = document.querySelector('#modalContainer')
+                        modalContainer.style.display = 'none'
+
+                    } else return
+                    
 
                 },
 
             }
-            
+
         })
 
     </script>
