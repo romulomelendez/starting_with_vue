@@ -73,39 +73,39 @@
 
                     </span>
 
-                    <!-- Modal -->
-                    <div id="modalContainer" v-on:click="closeModal">
-
-                        <div id="modal">
-
-                            <h1>Update!</h1>
-
-                            <div class="input-group mt-3 mb-3">
-
-                                <input type="text" class="form-control" value="">
-
-                            </div>
-
-                            <div class="input-group mb-4">
-
-                                <textarea class="form-control" placeholder="New comment" value=""></textarea>
-
-                            </div>  
-
-                            <div id="buttonContainer">
-
-                                <button type="button" id="cancel" class="btn btn-outline-danger me-5" v-on:click="closeModal">Cancel</button>
-                                <button type="button" class="btn btn-outline-success ms-5" v-on:click="updateComment(index)">Update</button>
-                            
-                            </div>
-
-                        </div>
-
-                    </div>
-
                </div>   
                 
             </ul>
+
+        </div>
+
+        <!-- Modal -->
+        <div id="modalContainer" v-on:click="closeModal">
+
+            <div id="modal">
+
+                <h1>Update!</h1>
+
+                <div class="input-group mt-3 mb-3">
+
+                    <input type="text" class="form-control" v-model="newName">
+
+                </div>
+
+                <div class="input-group mb-4">
+
+                    <textarea class="form-control" placeholder="New comment" v-model="newComment"></textarea>
+
+                </div>  
+
+                <div id="buttonContainer">
+
+                    <button type="button" id="cancel" class="btn btn-outline-danger me-5" v-on:click="closeModal">Cancel</button>
+                    <button type="button" class="btn btn-outline-success ms-5" v-on:click="updateComment(index)">Update</button>
+                
+                </div>
+
+            </div>
 
         </div>
 
@@ -173,6 +173,18 @@
 
                 },
 
+                closeModal(event) {
+                    console.log(event)
+                    console.log(typeof(event))
+                    if ( event.target.id == 'cancel' || event.target.id == 'modalContainer' ) {
+
+                        let modalContainer = document.querySelector('#modalContainer')
+                        modalContainer.style.display = 'none'
+
+                    } else return
+
+                },
+
                 updateComment(id) {
                     
                     try {
@@ -181,12 +193,9 @@
                         this.comments[id].name = this.newName
                         this.comments[id].message = this.newComment
 
-                    } catch(e) {
-                        
-                        console.log(e)
-                        closeModal()
-                    
                     }
+                    catch(error) { console.log(error) }
+                    finally { closeModal() }
 
                 },
 
@@ -195,18 +204,7 @@
                     let modalContainer = document.querySelector('#modalContainer')
                     modalContainer.style.display = 'flex'
 
-                },
-
-                closeModal(event) {
-
-                    if ( event.target.id == 'cancel' || event.target.id == 'modalContainer' ) {
-
-                        let modalContainer = document.querySelector('#modalContainer')
-                        modalContainer.style.display = 'none'
-
-                    } else return
-                    
-                },
+                }
 
             }
 
