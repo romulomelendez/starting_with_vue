@@ -82,13 +82,13 @@
 
                             <div class="input-group mt-3 mb-3">
 
-                                <input type="text" class="form-control" placeholder="New name" v-model="newName">
+                                <input type="text" class="form-control" value="">
 
                             </div>
 
                             <div class="input-group mb-4">
 
-                                <textarea class="form-control" placeholder="New comment" v-model="newComment"></textarea>
+                                <textarea class="form-control" placeholder="New comment" value=""></textarea>
 
                             </div>  
 
@@ -175,10 +175,18 @@
 
                 updateComment(id) {
                     
-                    console.log(id)
-                    // update the variables
-                    this.comments[id].name = this.newName
-                    this.comments[id].message = this.newComment
+                    try {
+
+                        // update the variables
+                        this.comments[id].name = this.newName
+                        this.comments[id].message = this.newComment
+
+                    } catch(e) {
+                        
+                        console.log(e)
+                        closeModal()
+                    
+                    }
 
                 },
 
