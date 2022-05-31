@@ -80,7 +80,7 @@
         </div>
 
         <!-- Modal -->
-        <div id="modalContainer" v-on:click="closeModal">
+        <div id="modalContainer" v-for="(comment, index) in comments" v-on:click="closeModal">
 
             <div id="modal">
 
@@ -173,6 +173,27 @@
 
                 },
 
+                updateComment(id) {
+                    
+                    try {
+
+                        // update the variables
+                        this.comments[id].name = this.newName
+                        this.comments[id].message = this.newComment
+
+                    }
+                    catch(error) { console.log(error) }
+                    finally { closeModal('cancel') }
+
+                },
+
+                showModal() {
+
+                    let modalContainer = document.querySelector('#modalContainer')
+                    modalContainer.style.display = 'flex'
+
+                },
+
                 closeModal(event) {
                     console.log(event)
                     console.log(typeof(event))
@@ -184,27 +205,6 @@
                     } else return
 
                 },
-
-                updateComment(id) {
-                    
-                    try {
-
-                        // update the variables
-                        this.comments[id].name = this.newName
-                        this.comments[id].message = this.newComment
-
-                    }
-                    catch(error) { console.log(error) }
-                    finally { closeModal() }
-
-                },
-
-                showModal() {
-
-                    let modalContainer = document.querySelector('#modalContainer')
-                    modalContainer.style.display = 'flex'
-
-                }
 
             }
 
