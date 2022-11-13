@@ -14,5 +14,12 @@
 
 ### 🚧Este arquivo README ainda está em construção!🚧
 
+<br/>
 
-> Written with [StackEdit](https://stackedit.io/).
+### Screenshots:
+<br/>
+
+![](./images/app.png)
+![](./images/app-2.png)
+
+## Double click in index.html file to open the project in browser
